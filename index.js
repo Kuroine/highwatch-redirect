@@ -3,7 +3,7 @@ const Vec3 = require('tera-vec3');
 module.exports = function HwRedirect(mod) {
   const highwatchRedeem = new Vec3(22205, 4870, 6191);
   const highwatchBanker = new Vec3(22438, 1605, 5857);
-  const highwatchBush = new Vec3(19330,3555,6189);
+  const highwatchBush = new Vec3(19702,4052,6228);
 
   let enabled = true;
 
