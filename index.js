@@ -4,20 +4,28 @@ module.exports = function HwRedirect(mod) {
   const highwatchRedeem = new Vec3(22205, 4870, 6191);
   const highwatchBanker = new Vec3(22438, 1605, 5857);
   const highwatchBush = new Vec3(19702,4052,6228);
+  const bahaarTP = new Vec3(115023, 90044, 6377);
 
   let enabled = true;
 
   mod.hook('S_SPAWN_ME', 3, event => {
     if (enabled && mod.game.me.zone == 7031 && event.loc.equals(highwatchRedeem)) {
       event.loc = highwatchBush;
-    }
+    };
+    if (mod.game.me.zone == 7004 && bahaarTP.dist3D(event.loc) <= 5) {
+      event.loc = new Vec3(115321, 96917, 7196);
+    };
     return true;
   })
 
   mod.command.add('hw', () => {
     enabled = !enabled;
     mod.command.message(enabled ? 'Highwatch Redirect enabled.' : 'Highwatch Redirect disabled.');
-  })
+  });
+
+  mod.command.add('lb', {
+    $none() { mod.send('C_RETURN_TO_LOBBY', 1, {}); } 
+  });
   
   this.destructor = function() {
     mod.command.remove('hw');

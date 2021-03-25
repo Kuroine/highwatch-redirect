@@ -1,10 +1,11 @@
 {
     "files": {
-        "README.md": "409f7fdaeeb47dfe35a7e77f8deebc09b684ca209d572b2f34178489867c7fea",
-        "index.js": "26efd30d5d197e390fc3cd09d6cd95716f20bae6d85567b16974e17523b6e27d",
+        "README.md": "c80889f4f43625563359c3a4605483ab1a1d2e654b9b249a29030ba6c3d1c0d3",
+        "index.js": "fdb2a941478e4f841120952fdbc5751999f3d19cc89ea87d948fb7a8e57a2edb",
         "module.json": "a9c5b51596e747809d19bf614761792e3632610b1ffa90b3251e276c5a5c5bb0"
     },
     "defs": {
+        "C_RETURN_TO_LOBBY": 1,
         "S_SPAWN_ME": 3
     }
 }
