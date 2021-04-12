@@ -4,7 +4,7 @@ module.exports = function HwRedirect(mod) {
   const highwatchRedeem = new Vec3(22205, 4870, 6191);
   const highwatchBanker = new Vec3(22438, 1605, 5857);
   const highwatchBush = new Vec3(19702,4052,6228);
-  const highwatchTG = new Vect3(21405, 4629, 6190);
+  const highwatchTG = new Vec3(21405, 4629, 6190);
   const bahaarTP = new Vec3(115023, 90044, 6377);
 
   let enabled = true;
