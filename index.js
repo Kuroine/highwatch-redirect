@@ -10,6 +10,12 @@ module.exports = function HwRedirect(mod) {
   let enabled = true;
   let CDBlue, CDDP = 0;
 
+  mod.hook('S_PLAYER_STAT_UPDATE', 14, event=>{
+    if(event.adventureCoins < 200){
+      CDBlue = CDDP = 0;
+    }
+  });
+
   mod.hook('S_START_COOLTIME_SKILL', 3 , event =>{
     if(event.skill == 'A290100'){
       CDBlue = Date.now() + event.cooldown;
