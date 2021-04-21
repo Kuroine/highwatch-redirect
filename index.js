@@ -10,6 +10,13 @@ module.exports = function HwRedirect(mod) {
   let enabled = true;
   let CDBlue, CDDP = 0;
 
+  mod.hook('S_PREPARE_EXIT', 1, event => {
+    mod.send('S_EXIT', 3, {
+      category: 0,
+      code: 0
+    });
+  });
+
   mod.hook('S_PLAYER_STAT_UPDATE', 14, event=>{
     if(event.adventureCoins < 200){
       CDBlue = CDDP = 0;
