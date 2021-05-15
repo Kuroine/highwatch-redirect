@@ -1,8 +1,13 @@
 {
     "disableAutoUpdate": false,
-    "name": "highwatch-redirect",
+    "name": "Misc",
     "author": "Kae",
-    "description": "highwatch-redirect",
+    "description": "Contains QoL",
+    "version": "1.0",
+    "options": {
+        "niceName": "Misc",
+        "reloadable": true
+    },
     "servers": ["https://raw.githubusercontent.com/Kuroine/highwatch-redirect/master/"],
     "supportUrl": "https://github.com/Kuroine/highwatch-redirect/issues"
 }
