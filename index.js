@@ -37,7 +37,7 @@ module.exports = function HwRedirect(mod) {
   });
 
   mod.hook('S_START_COOLTIME_SKILL', 3, event => {
-    if (mod.game.me.class === "Lancer") {
+    if (mod.game.me.class === "lancer") {
       if (event.skill == 'A290100') {
         CDBlue = Date.now() + event.cooldown;
       }
