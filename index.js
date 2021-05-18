@@ -26,7 +26,7 @@ module.exports = function HwRedirect(mod) {
             });
             mod.setTimeout(() => {
               mod.send('C_CREST_APPLY', 2, {
-                id: 33041,
+                id: 33037,
                 enable: true
               });
             }, 1000);
@@ -51,7 +51,7 @@ module.exports = function HwRedirect(mod) {
             });
           }, 1000);
           mod.send('C_CREST_APPLY', 2, {
-            id: 33041,
+            id: 33037,
             enable: false
           });
           mod.command.message("Energetic Reclaim Enabled");
