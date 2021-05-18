@@ -19,7 +19,7 @@ module.exports = function HwRedirect(mod) {
     if (mod.game.me.inDungeon == true) {
       if (mod.game.me.inCombat == false) {
         if (event.target == mod.game.me.gameId) {
-          if (event.runemarksAdded >= 6) {
+          if (event.runemarksAdded >= 6 && mod.game.glyphs.isEnabled(33040)) {
             mod.send('C_CREST_APPLY', 2, {
               id: 33040,
               enable: false
