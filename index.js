@@ -19,7 +19,7 @@ module.exports = function HwRedirect(mod) {
     if (mod.game.me.inDungeon == true) {
       if (mod.game.me.inCombat == false) {
         if (event.target == mod.game.me.gameId) {
-          if (event.runemarksAdded >= 6 && mod.game.glyphs.isEnabled(33040)) {
+          if (event.runemarksAdded >= 6 && mod.game.glyphs.isEnabled(33037)) {
             mod.send('C_CREST_APPLY', 2, {
               id: 33040,
               enable: false
@@ -43,7 +43,7 @@ module.exports = function HwRedirect(mod) {
   mod.game.me.on('change_zone', (zone, quick) => {
     if (mod.game.me.inDungeon == true) {
       if (mod.game.me.class == 'glaiver') {
-        if (mod.game.glyphs.isKnown(33040) && mod.game.glyphs.isKnown(33041)) {
+        if (mod.game.glyphs.isKnown(33040) && mod.game.glyphs.isKnown(33037)) {
           mod.setTimeout(() => {
             mod.send('C_CREST_APPLY', 2, {
               id: 33040,
