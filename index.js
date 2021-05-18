@@ -2,7 +2,7 @@ const Vec3 = require('tera-vec3');
 
 module.exports = function HwRedirect(mod) {
 
-  mod.game.initialize('inventory');
+  mod.game.initialize('glyphs', 'inventory');
 
   const highwatchRedeem = new Vec3(22205, 4870, 6191);
   const highwatchBanker = new Vec3(22438, 1605, 5857);
@@ -15,12 +15,50 @@ module.exports = function HwRedirect(mod) {
   //Mask Variables
   var Whiskers = [206100, 206101, 206102, 206103, 206104, 206105, 206106, 206107, 206108, 206109];
 
+  mod.hook('S_WEAK_POINT', 1, event => {
+    if (mod.game.me.inDungeon == true) {
+      if (mod.game.me.inCombat == false) {
+        if (event.target == mod.game.me.gameId) {
+          if (event.runemarksAdded >= 6) {
+            mod.send('C_CREST_APPLY', 2, {
+              id: 33040,
+              enable: false
+            });
+            mod.setTimeout(() => {
+              mod.send('C_CREST_APPLY', 2, {
+                id: 33041,
+                enable: true
+              });
+            }, 1000);
+            mod.command.message("Energetic Reclaim Disabled");
+          }
+        }
+      }
+    }
+  });
+
+  mod.game.glyphs.on('change', () => {
+  });
+
   mod.game.me.on('change_zone', (zone, quick) => {
     if (mod.game.me.inDungeon == true) {
+      if (mod.game.me.class == 'glaiver') {
+        if (mod.game.glyphs.isKnown(33040) && mod.game.glyphs.isKnown(33041)) {
+          mod.setTimeout(() => {
+            mod.send('C_CREST_APPLY', 2, {
+              id: 33040,
+              enable: true
+            });
+          }, 1000);
+          mod.send('C_CREST_APPLY', 2, {
+            id: 33041,
+            enable: false
+          });
+          mod.command.message("Energetic Reclaim Enabled");
+        }
+      }
       if (mod.game.inventory.findInEquipment(Whiskers) != undefined) mod.command.message("You have a fishing mask equipped! Remember to swap!");
-      else return;
     }
-    else return;
   })
 
   mod.hook('S_PREPARE_EXIT', 1, event => {

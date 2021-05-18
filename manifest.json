@@ -1,15 +1,17 @@
 {
     "files": {
         "README.md": "c80889f4f43625563359c3a4605483ab1a1d2e654b9b249a29030ba6c3d1c0d3",
-        "index.js": "8c4846bc524fb817923d0032e0df312f386a8bceb9c06529349bee7bc3d70edc",
+        "index.js": "bbc9cd12bb2a95e7e9dea40ad90e4d9a14f57270d4b60b5f1dbda13ca5efaa16",
         "module.json": "957f3ac6ada044b94845d68cf0e0fcbea0a705aecf8ecca0b2484861c5e14f41"
     },
     "defs": {
+        "C_CREST_APPLY": 2,
         "C_RETURN_TO_LOBBY": 1,
         "S_EXIT": 3,
         "S_PLAYER_STAT_UPDATE": 15,
         "S_PREPARE_EXIT": 1,
         "S_SPAWN_ME": 3,
-        "S_START_COOLTIME_SKILL": 3
+        "S_START_COOLTIME_SKILL": 3,
+        "S_WEAK_POINT": 1
     }
 }
