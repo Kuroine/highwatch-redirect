@@ -53,6 +53,7 @@ module.exports = function HwRedirect(mod) {
   });
 
   mod.hook('S_WEAK_POINT', 1, event => {
+    if(mod.game.me.inCombat == true) return;
     if (mod.game.me.inDungeon == true) {
       if (mod.game.me.inCombat == false && revive == false && mod.game.me.alive) {
         if (event.target == mod.game.me.gameId) {
