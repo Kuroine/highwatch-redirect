@@ -1,7 +1,7 @@
 {
     "files": {
         "README.md": "c80889f4f43625563359c3a4605483ab1a1d2e654b9b249a29030ba6c3d1c0d3",
-        "index.js": "4135cc9955195842373b3ada892d11dd212d81c30a104b7056b06ade4519936d",
+        "index.js": "5167be4bcc407eb9e269921b1b6d5171bdb15f3670953f69f3fd2ab2f1db739b",
         "module.json": "10cdebe20f3214141643776a809a334f9fdd783390f1a67e4c4b10763a4eafaa"
     },
     "defs": {
@@ -11,7 +11,6 @@
         "S_EXIT": 3,
         "S_PREPARE_EXIT": 1,
         "S_SPAWN_ME": 3,
-        "S_SPAWN_NPC": 12,
         "S_START_COOLTIME_SKILL": 3,
         "S_WEAK_POINT": 1
     }

@@ -12,7 +12,6 @@ module.exports = function HwRedirect(mod) {
   let enabled = true;
   let CDBlue, CDDP = 0;
   let revive = false;
-  let bossId = 0;
 
   //Mask Variables
   var Whiskers = [206100, 206101, 206102, 206103, 206104, 206105, 206106, 206107, 206108, 206109];
@@ -46,10 +45,6 @@ module.exports = function HwRedirect(mod) {
 
   mod.game.me.on('resurrect', () => {
     revive = true;
-  });
-
-  mod.hook('S_SPAWN_NPC', 12, event => {
-    bossId = event.gameId;
   });
 
   mod.hook('S_DESPAWN_NPC', 3, event => {
