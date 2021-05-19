@@ -11,25 +11,57 @@ module.exports = function HwRedirect(mod) {
   const bahaarTP = new Vec3(115023, 90044, 6377);
   let enabled = true;
   let CDBlue, CDDP = 0;
+  let revive = false;
+  let bossId = 0;
 
   //Mask Variables
   var Whiskers = [206100, 206101, 206102, 206103, 206104, 206105, 206106, 206107, 206108, 206109];
 
+  function setGlyphs(Prestack) {
+    if (Prestack == true) {
+      mod.setTimeout(() => {
+        mod.send('C_CREST_APPLY', 2, {
+          id: 33040,
+          enable: true
+        });
+      }, 1000);
+      mod.send('C_CREST_APPLY', 2, {
+        id: 33037,
+        enable: false
+      });
+    }
+    if (Prestack == false) {
+      mod.send('C_CREST_APPLY', 2, {
+        id: 33040,
+        enable: false
+      });
+      mod.setTimeout(() => {
+        mod.send('C_CREST_APPLY', 2, {
+          id: 33037,
+          enable: true
+        });
+      }, 1000);
+    }
+  }
+
+  mod.game.me.on('resurrect', () => {
+    revive = true;
+  });
+
+  mod.hook('S_SPAWN_NPC', 12, event => {
+    bossId = event.gameId;
+  });
+
+  mod.hook('S_DESPAWN_NPC', 3, event => {
+    if (event.gameId == bossId) revive = false; setGlyphs(true);
+  });
+
   mod.hook('S_WEAK_POINT', 1, event => {
     if (mod.game.me.inDungeon == true) {
-      if (mod.game.me.inCombat == false) {
+      if (mod.game.me.inCombat == false && revive == false) {
         if (event.target == mod.game.me.gameId) {
-          if (event.runemarksAdded >= 6 && mod.game.glyphs.isEnabled(33037)) {
-            mod.send('C_CREST_APPLY', 2, {
-              id: 33040,
-              enable: false
-            });
-            mod.setTimeout(() => {
-              mod.send('C_CREST_APPLY', 2, {
-                id: 33037,
-                enable: true
-              });
-            }, 1000);
+          if (event.runemarksAdded >= 6 && mod.game.glyphs.isEnabled(33040)) {
+            setGlyphs(false);
             mod.command.message("Energetic Reclaim Disabled");
           }
         }
@@ -37,23 +69,12 @@ module.exports = function HwRedirect(mod) {
     }
   });
 
-  mod.game.glyphs.on('change', () => {
-  });
-
   mod.game.me.on('change_zone', (zone, quick) => {
+    revive = false;
     if (mod.game.me.inDungeon == true) {
       if (mod.game.me.class == 'glaiver') {
         if (mod.game.glyphs.isKnown(33040) && mod.game.glyphs.isKnown(33037)) {
-          mod.setTimeout(() => {
-            mod.send('C_CREST_APPLY', 2, {
-              id: 33040,
-              enable: true
-            });
-          }, 1000);
-          mod.send('C_CREST_APPLY', 2, {
-            id: 33037,
-            enable: false
-          });
+          setGlyphs(true);
           mod.command.message("Energetic Reclaim Enabled");
         }
       }
@@ -68,11 +89,11 @@ module.exports = function HwRedirect(mod) {
     });
   });
 
-  mod.hook('S_PLAYER_STAT_UPDATE', 15, event => {
-    if (event.adventureCoins < 200) {
-      CDBlue = CDDP = 0;
-    }
-  });
+  // mod.hook('S_PLAYER_STAT_UPDATE', 15, event => {
+  //   if (event.adventureCoins < 200) {
+  //     CDBlue = CDDP = 0;
+  //   }
+  // });
 
   mod.hook('S_START_COOLTIME_SKILL', 3, event => {
     if (mod.game.me.class === "lancer") {
