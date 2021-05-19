@@ -56,7 +56,7 @@ module.exports = function HwRedirect(mod) {
     if(mod.game.me.inCombat == true) return;
     if (mod.game.me.inDungeon == true) {
       if (mod.game.me.inCombat == false && revive == false && mod.game.me.alive) {
-        if (event.target == mod.game.me.gameId) {
+        if (event.target == mod.game.me.gameId && (event.type == 3 && event.skill != 0) ) {
           if (event.runemarksAdded >= 6 && mod.game.glyphs.isEnabled(33040)) {
             setGlyphs(false);
             mod.command.message("Energetic Reclaim Disabled");
