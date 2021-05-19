@@ -54,7 +54,7 @@ module.exports = function HwRedirect(mod) {
 
   mod.hook('S_WEAK_POINT', 1, event => {
     if (mod.game.me.inDungeon == true) {
-      if (mod.game.me.inCombat == false && revive == false) {
+      if (mod.game.me.inCombat == false && revive == false && mod.game.me.alive) {
         if (event.target == mod.game.me.gameId) {
           if (event.runemarksAdded >= 6 && mod.game.glyphs.isEnabled(33040)) {
             setGlyphs(false);
