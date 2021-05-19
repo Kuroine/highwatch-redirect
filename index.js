@@ -60,7 +60,10 @@ module.exports = function HwRedirect(mod) {
             setGlyphs(false);
             mod.command.message("Energetic Reclaim Disabled");
           }
-          else setGlyphs(true); mod.command.message("Energetic Reclaim Enabled");
+          if (event.runemarksAdded <= 1 && mod.game.glyphs.isEnabled(33037)) {
+            setGlyphs(true);
+            mod.command.message("Energetic Reclaim Enabled");
+          }
         }
       }
     }
