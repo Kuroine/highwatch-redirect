@@ -54,7 +54,7 @@ module.exports = function HwRedirect(mod) {
 
   mod.hook('S_DESPAWN_NPC', 3, event => {
     const ent = entity['mobs'][event.gameId.toString()];
-    if (ent) revive = false; setGlyphs(true);
+    if (ent) revive = false;
   });
 
   mod.hook('S_WEAK_POINT', 1, event => {
@@ -65,23 +65,16 @@ module.exports = function HwRedirect(mod) {
             setGlyphs(false);
             mod.command.message("Energetic Reclaim Disabled");
           }
+          else setGlyphs(true); mod.command.message("Energetic Reclaim Enabled");
         }
       }
     }
   });
 
   mod.game.me.on('change_zone', (zone, quick) => {
-    revive = false;
     if (mod.game.me.inDungeon == true) {
-      if (mod.game.me.class == 'glaiver') {
-        if (mod.game.glyphs.isKnown(33040) && mod.game.glyphs.isKnown(33037)) {
-          setGlyphs(true);
-          mod.command.message("Energetic Reclaim Enabled");
-        }
-      }
       if (mod.game.inventory.findInEquipment(Whiskers) != undefined) mod.command.message("You have a fishing mask equipped! Remember to swap!");
     }
-    else setGlyphs(false);
   })
 
   mod.hook('S_PREPARE_EXIT', 1, event => {
