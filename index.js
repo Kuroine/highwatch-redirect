@@ -81,6 +81,7 @@ module.exports = function HwRedirect(mod) {
       }
       if (mod.game.inventory.findInEquipment(Whiskers) != undefined) mod.command.message("You have a fishing mask equipped! Remember to swap!");
     }
+    else setGlyphs(false);
   })
 
   mod.hook('S_PREPARE_EXIT', 1, event => {
