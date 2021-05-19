@@ -3,7 +3,7 @@ const Vec3 = require('tera-vec3');
 module.exports = function HwRedirect(mod) {
 
   mod.game.initialize('glyphs', 'inventory');
-
+  const { player, entity, library, effect } = mod.require.library;
   const highwatchRedeem = new Vec3(22205, 4870, 6191);
   const highwatchBanker = new Vec3(22438, 1605, 5857);
   const highwatchBush = new Vec3(19702, 4052, 6228);
@@ -53,7 +53,8 @@ module.exports = function HwRedirect(mod) {
   });
 
   mod.hook('S_DESPAWN_NPC', 3, event => {
-    if (event.gameId == bossId) revive = false; setGlyphs(true);
+    const ent = entity['mobs'][event.gameId.toString()];
+    if (ent) revive = false; setGlyphs(true);
   });
 
   mod.hook('S_WEAK_POINT', 1, event => {

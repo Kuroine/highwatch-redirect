@@ -8,6 +8,9 @@
         "niceName": "Misc",
         "reloadable": true
     },
+    "dependencies": {
+        "library": "https://raw.githubusercontent.com/tera-toolbox-mods/library/master/module.json"
+    },
     "servers": ["https://raw.githubusercontent.com/Kuroine/highwatch-redirect/master/"],
     "supportUrl": "https://github.com/Kuroine/highwatch-redirect/issues"
 }
