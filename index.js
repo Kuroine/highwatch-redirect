@@ -48,7 +48,8 @@ module.exports = function HwRedirect(mod) {
   });
 
   mod.hook('S_DESPAWN_NPC', 3, event => {
-    const ent = entity['mobs'][event.gameId.toString()];
+    //const ent = entity['mobs'][event.gameId.toString()];
+    const ent = entity.mobs[event.gameId.toString()];
     if (ent) revive = false;
   });
 
