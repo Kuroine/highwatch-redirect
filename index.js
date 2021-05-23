@@ -72,6 +72,7 @@ module.exports = function HwRedirect(mod) {
   });
 
   mod.game.me.on('change_zone', (zone, quick) => {
+    revive = false;
     if (mod.game.me.inDungeon == true) {
       if (mod.game.inventory.findInEquipment(Whiskers) != undefined) mod.command.message("You have a fishing mask equipped! Remember to swap!");
     }
@@ -122,6 +123,10 @@ module.exports = function HwRedirect(mod) {
   mod.command.add('lb', {
     $none() { mod.send('C_RETURN_TO_LOBBY', 1, {}); }
   });
+
+  mod.command.add('exit', {
+    $none() { mod.send('C_EXIT', 1, {}); }
+  })
 
   this.destructor = function () {
     mod.command.remove('hw');
