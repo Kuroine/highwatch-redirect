@@ -124,10 +124,6 @@ module.exports = function HwRedirect(mod) {
     $none() { mod.send('C_RETURN_TO_LOBBY', 1, {}); }
   });
 
-  mod.command.add('exit', {
-    $none() { mod.send('C_EXIT', 1, {}); }
-  })
-
   this.destructor = function () {
     mod.command.remove('hw');
   }

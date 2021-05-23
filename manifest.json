@@ -1,12 +1,11 @@
 {
     "files": {
         "README.md": "c80889f4f43625563359c3a4605483ab1a1d2e654b9b249a29030ba6c3d1c0d3",
-        "index.js": "fd25464203164c8fca96879f367d754ed55af63120ff1afb4055941ff7a90e73",
+        "index.js": "a917de3ba5fc224fa431967f82689f3d60c9bf44aecae394deab6f74ba211a17",
         "module.json": "10cdebe20f3214141643776a809a334f9fdd783390f1a67e4c4b10763a4eafaa"
     },
     "defs": {
         "C_CREST_APPLY": 2,
-        "C_EXIT": 1,
         "C_RETURN_TO_LOBBY": 1,
         "S_DESPAWN_NPC": 3,
         "S_EXIT": 3,
